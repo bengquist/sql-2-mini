@@ -1,0 +1,38 @@
+1. CREATE TABLE Movie (ID INTEGER PRIMARY KEY,
+                    Title TEXT,
+                    MediaTypeId INTEGER,
+                    FOREIGN KEY(MediaTypeId) REFERENCES MediaType(MediaTypeId));
+
+2. INSERT INTO Movie (Title, MediaTypeId) VALUES ('Scarface', 3);
+
+SELECT * FROM Movie;
+
+3. ALTER TABLE Movie ADD COLUMN GenreId INTEGER REFERENCES Genre(GenreId);
+
+SELECT * FROM Movie;
+
+4. UPDATE Movie SET GenreId=22 WHERE ID = 1;
+
+SELECT * FROM Movie;
+
+5. SELECT a.title, ar.Name 
+FROM Album a 
+JOIN Artist ar ON a.ArtistId = ar.ArtistId;
+
+6. SELECT * FROM Track
+WHERE GenreId IN ( SELECT GenreId FROM Genre WHERE Name = 'Jazz' OR Name = "Blues" );
+
+7. UPDATE Employee SET Phone=null WHERE EmployeeId=1;
+
+8. SELECT * FROM Customer WHERE Company IS null
+
+9. SELECT ar.artistId, ar.name, COUNT(*)
+FROM Artist ar
+JOIN Album a ON ar.ArtistId = a.ArtistId
+GROUP BY ar.artistId;
+
+10. SELECT DISTINCT country FROM Customer;
+
+11. SELECT * FROM Customer WHERE Fax IS NULL;
+
+12. DELETE FROM Customer WHERE Fax IS NULL;
